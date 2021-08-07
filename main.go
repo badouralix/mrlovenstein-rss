@@ -64,6 +64,7 @@ func handler(w http.ResponseWriter, req *http.Request) {
 		Title:       feed.Title,
 		Description: feed.Description,
 		Link:        &feeds.Link{Href: "https://tapas.io/rss/series/3346"},
+		Updated:     *feed.UpdatedParsed,
 	}
 	for _, item := range feed.Items {
 		span, _ = tracer.StartSpanFromContext(req.Context(), "htmlquery.loadurl")

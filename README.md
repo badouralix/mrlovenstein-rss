@@ -48,6 +48,8 @@ Output :
     <title>Mr. Lovenstein</title>
     <link>https://tapas.io/rss/series/3346</link>
     <description>World's Sweatiest Comic</description>
+    <pubDate>Fri, 06 Aug 2021 12:31:05 +0000</pubDate>
+    <lastBuildDate>Fri, 06 Aug 2021 12:31:05 +0000</lastBuildDate>
     <item>
       <title>Hi Strung</title>
       <link>https://tapas.io/episode/2253285</link>
