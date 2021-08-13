@@ -51,7 +51,7 @@ Output :
     <pubDate>Fri, 06 Aug 2021 12:31:05 +0000</pubDate>
     <lastBuildDate>Fri, 06 Aug 2021 12:31:05 +0000</lastBuildDate>
     <item>
-      <title>Hi Strung</title>
+      <title>Hi Strung.</title>
       <link>https://tapas.io/episode/2253285</link>
       <description></description>
       <content:encoded><![CDATA[https://d30womf5coomej.cloudfront.net/c/4d/1b90af4e-98e7-46fb-ab3c-a67a52d88582.png]]></content:encoded>
@@ -59,7 +59,7 @@ Output :
       <pubDate>Fri, 06 Aug 2021 12:31:05 +0000</pubDate>
     </item>
     <item>
-      <title>Who's Gonna Call</title>
+      <title>Who's Gonna Call.</title>
       <link>https://tapas.io/episode/2250364</link>
       <description></description>
       <content:encoded><![CDATA[https://d30womf5coomej.cloudfront.net/c/23/17a58e79-a8f2-448f-b690-4a94e40931a0.png]]></content:encoded>

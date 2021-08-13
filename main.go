@@ -1,6 +1,7 @@
 package main
 
 import (
+	"fmt"
 	"html"
 	"io/ioutil"
 	"log"
@@ -87,7 +88,7 @@ func handler(w http.ResponseWriter, req *http.Request) {
 		}
 
 		ffeed.Items = append(ffeed.Items, &feeds.Item{
-			Title:   item.Title,
+			Title:   fmt.Sprintf("%s.", item.Title),
 			Created: *item.PublishedParsed,
 			// Updated: *item.UpdatedParsed, // This ends up in a nil pointer dereference
 			Link: &feeds.Link{
