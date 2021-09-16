@@ -28,7 +28,7 @@ func handler(w http.ResponseWriter, req *http.Request) {
 	if err != nil {
 		log.Fatal(err)
 	}
-	defer logger.Sync()
+	defer logger.Sync() //nolint:errcheck
 
 	// Fetch rss feed
 	span, _ := tracer.StartSpanFromContext(req.Context(), "http.get")
@@ -39,6 +39,7 @@ func handler(w http.ResponseWriter, req *http.Request) {
 		logger.Error("An error occurred while fetching rss feed", zap.Error(err))
 		return
 	}
+	defer resp.Body.Close()
 
 	// Read response body
 	span, _ = tracer.StartSpanFromContext(req.Context(), "ioutil.readall")
@@ -118,7 +119,11 @@ func handler(w http.ResponseWriter, req *http.Request) {
 	ufeed := html.UnescapeString(sfeed)
 	span.Finish()
 
-	w.Write([]byte(ufeed))
+	_, err = w.Write([]byte(ufeed))
+	if err != nil {
+		logger.Error("An error occurred while writing the result", zap.Error(err))
+		return
+	}
 }
 
 func main() {
@@ -128,7 +133,6 @@ func main() {
 		tracer.WithUDS("/var/run/datadog/apm.sock"),
 		tracer.WithSamplingRules([]tracer.SamplingRule{tracer.RateRule(1)}),
 	)
-	defer tracer.Stop()
 
 	if err := profiler.Start(
 		profiler.WithService("mrlovenstein-rss"),
@@ -146,13 +150,15 @@ func main() {
 			// profiler.GoroutineProfile,
 		),
 	); err != nil {
+		tracer.Stop() // defer won't run on panic, so duplicate the tracer stop here
 		log.Fatal(err)
 	}
+	defer tracer.Stop()
 	defer profiler.Stop()
 
 	// Create a traced mux router
 	mux := httptrace.NewServeMux()
 	// Continue using the router as you normally would
 	mux.HandleFunc("/mrlovenstein.xml", handler)
-	http.ListenAndServe(":8080", mux)
+	log.Print(http.ListenAndServe(":8080", mux)) // log would print the exit reason for the HTTP server
 }
