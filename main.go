@@ -145,9 +145,9 @@ func main() {
 			// The profiles below are disabled by
 			// default to keep overhead low, but
 			// can be enabled as needed.
-			// profiler.BlockProfile,
-			// profiler.MutexProfile,
-			// profiler.GoroutineProfile,
+			profiler.BlockProfile,
+			profiler.MutexProfile,
+			profiler.GoroutineProfile,
 		),
 	); err != nil {
 		tracer.Stop() // defer won't run on panic, so duplicate the tracer stop here
