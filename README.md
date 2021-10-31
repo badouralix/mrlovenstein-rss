@@ -1,5 +1,8 @@
 # Mr. Lovenstein RSS
 
+[![Github Actions Buildx](https://github.com/badouralix/mrlovenstein-rss/actions/workflows/buildx.yaml/badge.svg)](https://github.com/badouralix/mrlovenstein-rss/actions/workflows/buildx.yaml)
+[![Github Actions Lint](https://github.com/badouralix/mrlovenstein-rss/actions/workflows/lint.yaml/badge.svg)](https://github.com/badouralix/mrlovenstein-rss/actions/workflows/lint.yaml)
+
 A small app to rebuild <https://tapas.io/rss/series/3346> into an RSS feed compatible with IFTTT.
 
 Feed is forwarded to <https://t.me/iftttmrlovenstein>.
