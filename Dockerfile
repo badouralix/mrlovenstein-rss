@@ -2,7 +2,7 @@
 ## Build
 ##
 
-FROM golang:1.17-buster AS build
+FROM golang:1.17-bullseye AS build
 
 WORKDIR /app
 
@@ -18,7 +18,7 @@ RUN go build -o mrlovenstein-rss
 ## Deploy
 ##
 
-FROM gcr.io/distroless/base-debian10
+FROM gcr.io/distroless/base-debian11
 
 WORKDIR /
 
