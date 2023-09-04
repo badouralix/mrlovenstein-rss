@@ -11,7 +11,7 @@ jobs:
     name: markdown-lint
     runs-on: ubuntu-latest
     steps:
-    - uses: actions/checkout@v3
+    - uses: actions/checkout@v4
     - uses: DavidAnson/markdownlint-cli2-action@v11
       with:
         globs: "**/*.md"
@@ -20,14 +20,14 @@ jobs:
     name: yaml-lint
     runs-on: ubuntu-latest
     steps:
-    - uses: actions/checkout@v3
+    - uses: actions/checkout@v4
     - uses: ibiqlik/action-yamllint@v3
 
   golangci-lint:
     name: golangci-lint
     runs-on: ubuntu-latest
     steps:
-    - uses: actions/checkout@v3
+    - uses: actions/checkout@v4
     - uses: actions/setup-go@v4
       with:
         go-version: 1.16
